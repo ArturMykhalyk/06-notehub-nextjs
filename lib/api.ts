@@ -35,8 +35,7 @@ export const createNote = async (note: FormValues):Promise<Note> => {
       note,
       { headers }
     );
-  
-    return response.data;
+      return response.data;
   };
 
 
