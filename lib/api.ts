@@ -40,7 +40,7 @@ export const createNote = async (note: FormValues):Promise<Note> => {
   };
 
 
-export const deleteNote = async (id: string): Promise<Note> => { console.log(typeof(id),id);
+export const deleteNote = async (id: string): Promise<Note> => {
      const headers = {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN }`,
       }
