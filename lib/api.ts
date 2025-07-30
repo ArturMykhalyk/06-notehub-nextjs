@@ -40,13 +40,14 @@ export const createNote = async (note: FormValues):Promise<Note> => {
   };
 
 
-export const deleteNote = async (id: number): Promise<Note> => {
+export const deleteNote = async (id: string): Promise<Note> => { console.log(typeof(id),id);
      const headers = {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN }`,
       }
     const response = await axios.delete<Note>(
         `https://notehub-public.goit.study/api/notes/${id}`,{headers}
-    );
+  );
+
     return response.data;
     
 }
@@ -56,7 +57,7 @@ interface NoteId {
   createdAt: string;
 
  }
-export const fetchNoteById = async (id: number): Promise<NoteId> => {
+export const fetchNoteById = async (id: string): Promise<NoteId> => {
        const headers = {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN }`,
   }

@@ -14,7 +14,7 @@ export function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
   const mutationDelete = useMutation({
-    mutationFn: (id: number) => deleteNote(id),
+    mutationFn: (id: string) => deleteNote(id),
     onSuccess: data => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
       toast.success(`Note "${data.title}" deleted.`);
@@ -24,7 +24,7 @@ export function NoteList({ notes }: NoteListProps) {
     },
   });
 
-  const handleClickDelete = (id: number) => {
+  const handleClickDelete = (id: string) => {
     mutationDelete.mutate(id);
   };
 
