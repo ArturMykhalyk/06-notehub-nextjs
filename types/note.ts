@@ -10,6 +10,6 @@ type NoteTag = "Todo"|"Work"|"Personal"|"Meeting"|"Shopping";
 
 export interface FormValues{
     title: string;
-    content: string;
+    content?: string;
     tag: NoteTag;
 }
