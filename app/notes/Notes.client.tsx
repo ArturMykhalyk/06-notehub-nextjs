@@ -32,6 +32,7 @@ export default function NotesClient({
     queryKey: ['notes', query, currentPage],
     queryFn: () => fetchNotes(query, currentPage),
     placeholderData: keepPreviousData,
+    refetchOnMount: false,
   });
 
   const totalPages = data?.totalPages ?? 0;

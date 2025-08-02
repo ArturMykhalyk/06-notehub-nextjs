@@ -20,7 +20,7 @@ export const fetchNotes = async (search: string, page:number): Promise<NotesHttp
       }
     const response = await axios.get<NotesHttpResponse>(
         "https://notehub-public.goit.study/api/notes",{params,headers}
-    );
+  );
     return response.data;
 }
 
@@ -50,17 +50,12 @@ export const deleteNote = async (id: string): Promise<Note> => {
     return response.data;
     
 }
-interface NoteId {
-    title: string;
-    content: string;
-  createdAt: string;
 
- }
-export const fetchNoteById = async (id: string): Promise<NoteId> => {
+export const fetchNoteById = async (id: string): Promise<Note> => {
        const headers = {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN }`,
   }
-   const response = await axios.get<NoteId>(
+   const response = await axios.get<Note>(
         `https://notehub-public.goit.study/api/notes/${id}`,{headers}
     );
     return response.data;
