@@ -14,13 +14,19 @@ import { Modal } from '@/components/Modal/Modal';
 import { NoteForm } from '@/components/NoteForm/NoteForm';
 import { useDebouncedCallback } from 'use-debounce';
 import { Toaster } from 'react-hot-toast';
+import { Note } from '@/types/note';
 
 interface NotesClientProps {
+  initialData: {
+    notes: Note[];
+    totalPages: number;
+  };
   initialQuery: string;
   initialPage: number;
 }
 
 export default function NotesClient({
+  initialData,
   initialQuery,
   initialPage,
 }: NotesClientProps) {
@@ -32,6 +38,7 @@ export default function NotesClient({
     queryKey: ['notes', query, currentPage],
     queryFn: () => fetchNotes(query, currentPage),
     placeholderData: keepPreviousData,
+    initialData,
     refetchOnMount: false,
   });
 
